@@ -41,7 +41,8 @@
     - Use the sketches from the "Master Outline" document.
     - Write in the same style/tone as past USNCO exams, but make the questions harder.
     - Incorrect answer choices should correspond to the common misconceptions and errors that students would likely make. 
-    - Keep a strictly neutral tone. NEVER include hints, warnings, or clarifying instructions (e.g., "Do not assume...", "Account for...", "Do not rely on..."). 
+    - Keep a strictly neutral tone. NEVER include hints, warnings, or clarifying instructions (e.g., "Do not assume...", "Account for...", "Do not rely on...").
+    - NEVER hint at the problem solution or trap. 
     - Do not include any commentary.
     - Questions must be solvable with a scientific calculator ONLY. Excessive computation is beyond the scope of the USNCO.
     - All organic species should be drawn as their 2D or 3D representations (zigzag carbon chains) using chemfig.
@@ -93,7 +94,7 @@
     - The correct answers should be counterintuitive.
     - The problem texts should be written in the same style/tone as past USNCO exams.
     - All incorrect answer choices should correspond to valid mistakes the student may make or traps they may fall into.
-    - The problem texts should keep a strictly neutral tone. NEVER include hints, warnings, or clarifying instructions (e.g., "Do not assume...", "Account for...", "Do not rely on..."). NEVER tell the user what equation to use, or hint to consider thermodynamics vs kinetic control.
+    - The problem texts should keep a strictly neutral tone. NEVER include hints, warnings, or clarifying instructions (e.g., "Do not assume...", "Account for...", "Do not rely on..."). NEVER tell the user what equation to use, or hint to consider thermodynamics vs kinetic control. NEVER hint at the solution or trap.
     - No commentary in the question text.
     - Questions must be solvable with a scientific calculator ONLY.
     - All organic species should be drawn as their 2D or 3D representations (zigzag carbon chains) using chemfig.
