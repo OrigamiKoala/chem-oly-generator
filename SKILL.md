@@ -23,7 +23,7 @@ All agents operate within `generation_environment` and must read/write to these 
 
 ### Execution Constraints
 - DO NOT simulate multiple roles inside a single LLM context window.
-- You MUST explicitly call the `Spawn` command to provision separated, isolated subagents.
+- You MUST explicitly spawn subagents using the `spawn` or `sub_agents` command/tool to provision separated, isolated subagents.
 - Await the asynchronous callback or Artifact generation from the subagent before proceeding.
 
 ### Step 1: Blueprint Configuration (Director & Brainstorm)
