@@ -1,0 +1,348 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{chemfig}
+\usepackage{chemformula}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+\geometry{margin=1in}
+
+\title{2026 U.S. National Chemistry Olympiad\\National Exam Part II \& Solutions}
+\author{American Chemical Society}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Part II -- Exam Problems}
+
+\subsection*{Question 1 [12\%]}
+An unknown compound X contains only carbon, hydrogen, and oxygen.
+
+\subsubsection*{a.}
+When burned, 1.00 g of X produces 2.00 g of carbon dioxide and 0.818 g of water. What is the empirical formula of X?
+\vspace{4cm}
+
+\subsubsection*{b.}
+A 1.68 g sample of X is introduced into a 2.00 L evacuated flask. The flask is slowly heated until the liquid evaporates completely, which occurs at $62.3^{\circ}\text{C}$. At this temperature, the pressure in the flask is 200.0 mmHg. What is the molar mass of X, and what is its molecular formula?
+\vspace{4cm}
+
+\subsubsection*{c.}
+The melting point of X is $11.8^{\circ}\text{C}$ and its normal boiling point is $101.1^{\circ}\text{C}$. Calculate the standard enthalpy and entropy of vaporization of X.
+\vspace{4cm}
+
+\newpage
+\subsubsection*{d.}
+What types of intermolecular forces are likely present in liquid X? Justify your answer.
+\vspace{4cm}
+
+\subsubsection*{e.}
+The unit cell of crystalline X at its melting point has a volume of 241.5 \AA$^3$ and the density of the solid is 1.211 g $\text{cm}^{-3}$. How many molecules of X are present in the unit cell?
+\vspace{4cm}
+
+\subsubsection*{f.}
+The density of liquid X at its melting point is 1.034 g $\text{cm}^{-3}$. Will the melting point increase, decrease, or stay the same as the pressure is increased?
+\vspace{4cm}
+
+\newpage
+\subsection*{Question 2 [14\%]}
+The nickel(II) ion forms a variety of colored complex ions, including green \ch{Ni(H2O)6^2+}, violet \ch{Ni(NH3)6^2+} ($K_f = 2.0 \times 10^8$), and yellow \ch{Ni(CN)4^2-} ($K_f = 2.0 \times 10^{31}$).
+
+\subsubsection*{a.}
+Explain the trend in colors among the three complex ions.
+\vspace{4cm}
+
+\subsubsection*{b.}
+How many unpaired electrons does each of the three complex ions have?
+\vspace{4cm}
+
+\subsubsection*{c.}
+To 1.00 L of a 0.01 M solution of \ch{Ni(NO3)2} is slowly added ammonia. Initially, a green precipitate of \ch{Ni(OH)2} ($K_{sp} = 2.0 \times 10^{-15}$) is formed. What is the pH of the solution at the point where the precipitate just begins to form?
+\vspace{4cm}
+
+\subsubsection*{d.}
+By the time 0.600 mol of \ch{NH3} have been added to the solution in c., the solution has become homogeneous and violet in color. Calculate the concentration of \ch{Ni^2+(aq)} in this solution.
+\vspace{4cm}
+
+\newpage
+\subsubsection*{e.}
+Nickel sulfide is quite insoluble ($K_{sp} = 4.0 \times 10^{-20}$). 0.010 mol of \ch{NiS} is suspended in 1.00 L of a solution buffered at pH 10.00. Ammonia is then bubbled through this solution until the nickel sulfide just dissolves. Show that no solid \ch{Ni(OH)2} will be present at this point. For \ch{H2S}, $pK_{a1} = 7.05$ and $pK_{a2} = 19.0$.
+\vspace{5cm}
+
+\subsubsection*{f.}
+Calculate the number of moles of \ch{NH3} added to the solution in part e. (The $pK_a$ of \ch{NH4^+} is 9.25.)
+\vspace{5cm}
+
+\newpage
+\subsection*{Question 3 [12\%]}
+Lanthanum pentanickel, \ch{LaNi5(s)}, is under consideration for solid-state hydrogen storage. \ch{LaNi5(s)} is a conductive metallic crystal, and it forms hydrides in two phases:
+\begin{itemize}
+    \item an $\alpha$ phase $\alpha\text{-}\ch{LaNi5H}_x(s)$ observed at lower \ch{H2} pressure, characterized as a solid-state solution
+    \item a $\beta$ phase $\beta\text{-}\ch{LaNi5H}_{6.39}(s)$ observed at higher \ch{H2} pressure, characterized by metal-hydrogen bonding
+\end{itemize}
+
+\begin{tabular}{lll||lll}
+Species & $\Delta H^\circ_f$ (kJ/mol) & $S^\circ$ (J/(mol$\cdot$K)) & Species & $\Delta H^\circ_f$ (kJ/mol) & $S^\circ$ (J/(mol$\cdot$K)) \\ \hline
+\ch{H2(g)} & 0 & 130.7 & \ch{LaNi5(s)} & -162 & 217 \\
+\ch{Ni(s)} & 0 & 29.9 & $\alpha\text{-}\ch{LaNi5H}_x(s)$ & -186 & 223 \\
+\ch{La(s)} & 0 & 56.9 & $\beta\text{-}\ch{LaNi5H}_{6.39}(s)$ & ? & ?
+\end{tabular}
+
+\subsubsection*{a.}
+Calculate $\Delta G^\circ_f$ of \ch{LaNi5(s)} at 298 K.
+\vspace{3cm}
+
+\subsubsection*{b.}
+Show that the maximum degree of hydrogenation $x$ for $\alpha\text{-}\ch{LaNi5H}_x(s)$ is approximately 0.43.
+\vspace{3cm}
+
+\subsubsection*{c.}
+Calculate $\Delta G^\circ_{rxn}$ at $30^\circ\text{C}$ and at $50^\circ\text{C}$ for the hydrogenation of the $\alpha$ phase to the $\beta$ phase.
+\vspace{3cm}
+
+\subsubsection*{d.}
+Calculate $\Delta H^\circ_f$ and $S^\circ$ for $\beta\text{-}\ch{LaNi5H}_{6.39}(s)$.
+\vspace{3cm}
+
+\newpage
+\subsection*{Question 4 [12\%]}
+Iodomethane, \ch{CH3I}, hydrolyzes irreversibly in dilute solution via two distinct pathways:
+\begin{align*}
+    \ch{CH3I(aq) + H2O(l)} &\rightarrow \ch{CH3OH(aq) + H^+(aq) + I^-(aq)} \quad \text{Rate} = k_1[\ch{CH3I}] \\
+    \ch{CH3I(aq) + OH^-(aq)} &\rightarrow \ch{CH3OH(aq) + I^-(aq)} \quad \text{Rate} = k_2[\ch{CH3I}][\ch{OH^-}]
+\end{align*}
+
+\subsubsection*{a.}
+A solution is prepared by dissolving enough methyl iodide in pure water to make a 0.0500 M solution. After 1.50 h at $89.9^{\circ}\text{C}$, the concentration of iodide in this solution is measured to be 0.0311 M. What is the value of $k_1$ at $89.9^{\circ}\text{C}$?
+\vspace{4cm}
+
+\subsubsection*{b.}
+What would the concentration of iodide be in this solution after 3.00 h at $89.9^{\circ}\text{C}$?
+\vspace{4cm}
+
+\subsubsection*{c.}
+What are the values of $k_1$ and $k_2$ for the reaction at 333 K?
+\vspace{4cm}
+
+\subsubsection*{d.}
+The analogous data for the reaction studied at 343 K show that reaction 1 is faster at 343 K by a factor of 2.9, while reaction 2 is faster by a factor of 2.6. Which has a larger activation energy, reaction 1 or reaction 2? Explain your reasoning.
+\vspace{4cm}
+
+\subsubsection*{e.}
+The value of $k_2$ for \ch{CH3CH2I} is significantly smaller than the value of $k_2$ for \ch{CH3I} at a given temperature. Rationalize this difference based on the structures of the transition states for these reactions.
+\vspace{4cm}
+
+\newpage
+\subsection*{Question 5 [12\%]}
+Write net equations for each of the reactions below. Use appropriate ionic and molecular formulas and omit formulas for all ions or molecules that do not take part in a reaction. Write structural formulas for all organic substances, and clearly show stereochemistry where relevant. You need not balance the equations or show the phases of the species.
+
+\subsubsection*{a.} Sulfur dioxide is bubbled through barium hydroxide solution.
+\vspace{2cm}
+
+\subsubsection*{b.} Phosphorus pentachloride is heated with phosphorus(V) oxide.
+\vspace{2cm}
+
+\subsubsection*{c.} Cobalt(II) nitrate is dissolved in concentrated aqueous hydrochloric acid.
+\vspace{2cm}
+
+\subsubsection*{d.} Iron(II) ammonium sulfate reacts with potassium dichromate in dilute sulfuric acid.
+\vspace{2cm}
+
+\subsubsection*{e.} Bromine is added to 4-nitrotoluene in the presence of anhydrous iron(III) bromide.
+\vspace{2cm}
+
+\subsubsection*{f.} Acetone (2-propanone) is added to an aqueous solution of hydroxylamine.
+\vspace{2cm}
+
+\newpage
+\subsection*{Question 6 [13\%]}
+A metallic alloy contains all of the group 11 metals (copper, silver, and gold).
+\begin{align*}
+    \ch{Cu^2+(aq) + 2e^-} &\rightarrow \ch{Cu(s)} \quad E^\circ = +0.34\text{ V} \\
+    \ch{Ag^+(aq) + e^-} &\rightarrow \ch{Ag(s)} \quad E^\circ = +0.80\text{ V} \\
+    \ch{Au^+(aq) + e^-} &\rightarrow \ch{Au(s)} \quad E^\circ = +1.83\text{ V} \\
+    \ch{Au^3+(aq) + 3e^-} &\rightarrow \ch{Au(s)} \quad E^\circ = +1.52\text{ V} \\
+    \ch{AuCl4^-(aq) + 3e^-} &\rightarrow \ch{Au(s) + 4Cl^-(aq)} \quad E^\circ = +0.93\text{ V}
+\end{align*}
+
+\subsubsection*{a.}
+0.1000 g of this alloy is dissolved in 10 mL of 6 M nitric acid (a large excess), which leaves behind 0.0325 g of unreacted metallic gold. Explain why gold does not dissolve in nitric acid, but does dissolve in aqua regia, which is a mixture of nitric and hydrochloric acids.
+\vspace{4cm}
+
+\subsubsection*{b.}
+What is the formation constant $K_f$ for the \ch{AuCl4^-} complex ion?
+\vspace{4cm}
+
+\subsubsection*{c.}
+To the filtrate from part a. is added aqueous ammonia to give a total volume of 50.0 mL, with the final pH of the solution equal to 4.00. What fraction of the Cu(II) ion in solution is in the form of \ch{Cu(NH3)4^2+}? The $K_f$ of \ch{Cu(NH3)4^2+} is $1.7 \times 10^{13}$ and the $pK_a$ of \ch{NH4^+} is 9.25.
+\vspace{4cm}
+
+\subsubsection*{d.}
+The solution from part c. is subjected to constant-current electrolysis (12.0 mA) with a platinum cathode. The first plateau at 3400 s corresponds to \ch{Ag+} reduction, and the final drop occurs at 8950 s. What is the percent by mass of copper and silver in the alloy?
+\vspace{4cm}
+
+\subsubsection*{e.}
+What is the $K_{sp}$ of AgBr?
+\vspace{4cm}
+
+\newpage
+\subsection*{Question 7 [13\%]}
+Boron and hydrogen form a number of interesting compounds.
+
+\subsubsection*{a.}
+Give the electron configuration and the number of unpaired electrons in both the ground state of atomic B and its lowest-energy excited state.
+\vspace{3cm}
+
+\subsubsection*{b.}
+Which requires more energy to excite, the ground state of atomic B to its lowest excited state or the ground state of atomic H to its lowest excited state? Justify your answer.
+\vspace{3cm}
+
+\subsubsection*{c.}
+In the gas phase at low pressure, the binary compound \ch{BH3} can be observed. Clearly describe or depict its geometry and explain its bonding.
+\vspace{3cm}
+
+\subsubsection*{d.}
+At higher pressures or in condensed phases, \ch{BH3} dimerizes to form diborane, \ch{B2H6}. Clearly describe or depict the geometry and explain the bonding in diborane.
+\vspace{3cm}
+
+\subsubsection*{e.}
+Boron and hydrogen form the anionic species borohydride, \ch{BH4^-}. Draw a Lewis structure of \ch{BH4^-}, making sure to include all lone pairs and nonzero formal charges.
+\vspace{3cm}
+
+\subsubsection*{f.}
+Carboranes are neutral compounds with the formula \ch{C2B10H12}, where two of the boron atoms in the icosahedral dianion \ch{B12H12^2-} are replaced with carbon. How many isomers of carborane are possible? Clearly describe them.
+\vspace{3cm}
+
+\newpage
+\subsection*{Question 8 [12\%]}
+\textit{(E)}-2-pentene reacts with hydrogen bromide to give three compounds, A, B, and C. Compound A reacts with potassium hydroxide in dimethyl sulfoxide to give \textit{(E)}-2-pentene and its \textit{(Z)} isomer as the only alkene products. In contrast, compounds B and C react with KOH in DMSO to give not only \textit{(E)}- and \textit{(Z)}-2-pentene but also another alkene D.
+
+\subsubsection*{a.}
+Draw structures for compounds A-D, clearly indicating stereochemistry if applicable.
+\vspace{5cm}
+
+\subsubsection*{b.}
+What is the relationship (constitutional isomers, enantiomers, diastereomers, or not isomers) between compounds A and B?
+\vspace{1.5cm}
+
+\subsubsection*{c.}
+What is the relationship (constitutional isomers, enantiomers, diastereomers, or not isomers) between compounds B and C?
+\vspace{1.5cm}
+
+\subsubsection*{d.}
+\textit{(E)}-2-pentene has a melting point of $-140^{\circ}\text{C}$ and a normal boiling point of $37^{\circ}\text{C}$, while \textit{(Z)}-2-pentene has a melting point of $-180^{\circ}\text{C}$ and a boiling point of $37^{\circ}\text{C}$. Explain why the \textit{(E)} isomer has a significantly higher melting point, but essentially the same boiling point, as the \textit{(Z)} isomer.
+\vspace{3cm}
+
+\subsubsection*{e.}
+No alkenes with the formula \ch{C5H10} are chiral. Draw the structure of a chiral alkene with the formula \ch{C6H12}.
+\vspace{3cm}
+
+\newpage
+\section*{Part II -- Solutions}
+
+\subsection*{Question 1 Solutions}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{a.} 
+    $2.00\text{ g CO}_2 / (44.01\text{ g mol}^{-1}) = 0.0454\text{ mol C} = 0.545\text{ g C}$ \\
+    $0.818\text{ g H}_2\text{O} / (18.02\text{ g mol}^{-1}) = 0.0454\text{ mol H}_2\text{O} = 0.0908\text{ mol H} = 0.0915\text{ g H}$ \\
+    $1.00\text{ g X} - 0.545\text{ g C} - 0.0915\text{ g H} = 0.364\text{ g O} = 0.0227\text{ mol O}$ \\
+    Mol ratio of $\text{C}:\text{H}:\text{O} = 2:4:1$, so empirical formula is \ch{C2H4O}.
+    
+    \item \textbf{b.} 
+    $PV = nRT$ \\
+    $P = (200.0\text{ mmHg} / 760\text{ mmHg/atm}) \times 1.013\text{ bar/atm} = 0.2666\text{ bar}$ \\
+    $(0.2666\text{ bar})(2.00\text{ L}) = n(0.08314\text{ L bar mol}^{-1}\text{ K}^{-1})(335.5\text{ K}) \implies n = 0.0191\text{ mol}$ \\
+    $M = 1.68\text{ g} / 0.0191\text{ mol} = 87.9\text{ g mol}^{-1}$ \\
+    Since the molar mass of \ch{C2H4O} = 44.1 g/mol, the molecular formula is \ch{C4H8O2}.
+    
+    \item \textbf{c.} 
+    $P_1 = 0.2666\text{ bar}$ at $T_1 = 335.5\text{ K}$; $P_2 = 1.013\text{ bar}$ at $T_2 = 374.3\text{ K}$. \\
+    $\ln(P_2/P_1) = -\frac{\Delta H^\circ_{vap}}{R}\left(\frac{1}{T_2} - \frac{1}{T_1}\right) \implies \Delta H^\circ_{vap} = 35.92\text{ kJ mol}^{-1}$ \\
+    At 374.3 K, $K_{eq} = 1.013$, $\Delta G^\circ_{vap} = -RT\ln(1.013) = -0.0402\text{ kJ mol}^{-1}$ \\
+    $\Delta G^\circ_{vap} = \Delta H^\circ_{vap} - T\Delta S^\circ_{vap} \implies \Delta S^\circ_{vap} = 96.1\text{ J mol}^{-1}\text{ K}^{-1}$.
+    
+    \item \textbf{d.} 
+    London dispersion forces are the only significant forces present. The enthalpy of vaporization is modest, and the entropy fits Trouton's rule. Hydrogen bonding is unlikely because the boiling point is lower than expected for a hydrogen-bonded molecule of this size (e.g., n-propanol boils at $97^{\circ}\text{C}$ with fewer atoms).
+    
+    \item \textbf{e.} 
+    $\frac{1.211\text{ g}}{1\text{ cm}^3} \times \frac{10^{-24}\text{ cm}^3}{1\text{ \AA}^3} \times \frac{241.5\text{ \AA}^3}{1\text{ unit cell}} \times \frac{1\text{ mol}}{88.1\text{ g}} \times \frac{6.022\times10^{23}\text{ molecules}}{1\text{ mol}} = 2\text{ molecules/unit cell}$.
+    
+    \item \textbf{f.} 
+    Higher pressures favor the denser solid phase, so the melting point will increase.
+\end{itemize}
+
+\subsection*{Question 2 Solutions}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{a.} Complexes absorb complementary colors: green \ch{Ni(H2O)6^2+} absorbs red light, violet \ch{Ni(NH3)6^2+} absorbs yellow light, and yellow \ch{Ni(CN)4^2-} absorbs violet light. Energy of absorbed light increases along $\ch{H2O} < \ch{NH3} < \ch{CN^-}$ due to increasing ligand field strength.
+    \item \textbf{b.} Octahedral $d^8$ complexes \ch{Ni(H2O)6^2+} and \ch{Ni(NH3)6^2+} have 2 unpaired electrons. Square planar $d^8$ \ch{Ni(CN)4^2-} has 0 unpaired electrons.
+    \item \textbf{c.} $[\ch{Ni^2+}] = 0.010\text{ M} \implies [\ch{Ni^2+}][\ch{OH^-}]^2 = 2.0\times 10^{-15} \implies [\ch{OH^-}] = 4.47\times 10^{-7}\text{ M} \implies \text{pH} = 7.65$.
+    \item \textbf{d.} $[\ch{NH3}] = 0.600 - 6(0.010) = 0.54\text{ M}$. $\frac{[\ch{Ni(NH3)6^2+}]}{[\ch{Ni^2+}][\ch{NH3}]^6} = \frac{0.010}{[\ch{Ni^2+}](0.54)^6} = 2.0\times 10^8 \implies [\ch{Ni^2+}] = 2.0 \times 10^{-9}\text{ M}$.
+    \item \textbf{e.} At pH 10.00, $[\ch{HS^-}] = 0.0100\text{ M}$. By Henderson-Hasselbalch: $10.00 = 19.0 + \log_{10}([\ch{S^2-}]/0.0100) \implies [\ch{S^2-}] = 1.0\times 10^{-11}\text{ M}$. From $K_{sp}(\ch{NiS})$: $[\ch{Ni^2+}] = 4.0\times 10^{-20}/(1.0\times 10^{-11}) = 4\times 10^{-9}\text{ M}$. $Q_{sp}\text{ for }\ch{Ni(OH)2} = (4\times 10^{-9})(1.0\times 10^{-4})^2 = 4.0\times 10^{-17} < K_{sp} (2.0\times 10^{-15})$, so no precipitate forms.
+    \item \textbf{f.} From part e, $[\ch{Ni^2+}] = 4\times 10^{-9}\text{ M} \implies [\ch{Ni(NH3)6^2+}] = 0.010\text{ M}$. $\frac{0.010}{(4\times 10^{-9})[\ch{NH3}]^6} = 2.0\times 10^8 \implies [\ch{NH3}] = 0.48\text{ M}$. Moles of bound \ch{NH3} = $6(0.010) = 0.060\text{ mol}$. $[\ch{NH4+}] = 0.085\text{ M}$ via $10.00 = 9.25 + \log_{10}(0.48/[\ch{NH4+}])$. Total \ch{NH3} = $0.48 + 0.060 + 0.085 = 0.63\text{ mol}$.
+\end{itemize}
+
+\subsection*{Question 3 Solutions}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{a.} $\Delta H^\circ_{rxn} = -162\text{ kJ mol}^{-1}$, $\Delta S^\circ_{rxn} = 217 - (56.9 + 5(29.9)) = 10.6\text{ J mol}^{-1}\text{ K}^{-1}$. $\Delta G^\circ_{f, 298K} = -162 - 298(0.0106) = -165\text{ kJ mol}^{-1}$.
+    \item \textbf{b.} Max mass\% of H is 0.10\%. In 100 g: $0.10\text{ g} / 1.008 = 0.099\text{ mol H}$, $99.9\text{ g} / 432.35 = 0.231\text{ mol }\ch{LaNi5}$. $x = 0.099/0.231 = 0.43$.
+    \item \textbf{c.} Coexistence pressures: 3.1 bar ($30^\circ\text{C}$) and 5.4 bar ($50^\circ\text{C}$). $\Delta G^\circ = -RT\ln(P_{\ch{H2}}^{-2.98})$. $\Delta G^\circ(30^\circ\text{C}) = 8.50\text{ kJ mol}^{-1}$, $\Delta G^\circ(50^\circ\text{C}) = 13.5\text{ kJ mol}^{-1}$.
+    \item \textbf{d.} Using simultaneous equations: $\Delta H^\circ_{rxn} = -67.3\text{ kJ mol}^{-1}$, $\Delta S^\circ_{rxn} = -250\text{ J mol}^{-1}\text{ K}^{-1}$. $\Delta H^\circ_f(\beta) = -67.3 + (-186) = -253\text{ kJ mol}^{-1}$. $S^\circ(\beta) = -250 + 223 + 2.98(130.7) = 362\text{ J mol}^{-1}\text{ K}^{-1}$.
+\end{itemize}
+
+\subsection*{Question 4 Solutions}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{a.} $[\ch{CH3I}] = 0.0500 - 0.0311 = 0.0189\text{ M}$. $\ln(0.0189) = \ln(0.0500) - k_1(5400\text{ s}) \implies k_1 = 1.80\times 10^{-4}\text{ s}^{-1}$.
+    \item \textbf{b.} $\ln([\ch{CH3I}]) = \ln(0.0500) - (1.80\times 10^{-4})(10800) \implies [\ch{CH3I}] = 7.16\times 10^{-3}\text{ M} \implies [\ch{I^-}] = 0.0428\text{ M}$.
+    \item \textbf{c.} At low pH, $k_{obs} \rightarrow k_1$. From graph, $\log_{10}(k_1) = -5.06 \implies k_1 = 8.7\times 10^{-6}\text{ s}^{-1}$. At pH 13, $\log_{10}(k_{obs}) = -3.48 \implies k_{obs} = 3.31\times 10^{-4}\text{ s}^{-1} \implies k_2 = (3.31\times 10^{-4} - 8.7\times 10^{-6})/0.10 = 3.2\times 10^{-3}\text{ M}^{-1}\text{ s}^{-1}$.
+    \item \textbf{d.} Reaction 1 has a greater temperature dependence factor (2.9 vs 2.6), meaning it has a larger activation energy.
+    \item \textbf{e.} Substitution increases steric crowding in the 5-coordinate $S_N2$ transition state, raising the activation energy for \ch{CH3CH2I}.
+\end{itemize}
+
+\subsection*{Question 5 Solutions}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{a.} \ch{Ba^2+ + SO2 + 2OH^- -> BaSO3 + H2O}
+    \item \textbf{b.} \ch{PCl5 + P4O10 -> POCl3}
+    \item \textbf{c.} \ch{Co^2+ + 4Cl^- -> CoCl4^2-}
+    \item \textbf{d.} \ch{Cr2O7^2- + 6Fe^2+ + 14H^+ -> 2Cr^3+ + 6Fe^3+ + 7H2O}
+    \item \textbf{e.} \chemfig{*{6}(-(-CH_3)= -(-Br)= -(-NO_2)=)} (2-bromo-4-nitrotoluene structure)
+    \item \textbf{f.} \chemfig{( - [::30]CH_3)( - [::-30]CH_3)=N-OH}
+\end{itemize}
+
+\subsection*{Question 6 Solutions}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{a.} Nitric acid cannot oxidize gold due to its high potential. In aqua regia, chloride ions complex \ch{Au^3+} tightly to form \ch{AuCl4^-}, lowering the required potential.
+    \item \textbf{b.} $\Delta G^\circ = -3F(1.52 - 0.93) = -170.8\text{ kJ mol}^{-1} \implies K_f = 8.6\times 10^{29}$.
+    \item \textbf{c.} Moles of initial acid = 0.060 mol. At pH 4, $[\ch{NH4+}] = 0.12\text{ M}$. via HH: $[\ch{NH3}] = 6.7\times 10^{-6}\text{ M}$. Ratio $\frac{[\ch{Cu(NH3)4^2+}]}{[\ch{Cu^2+}]} = K_f[\ch{NH3}]^4 = 3.4\times 10^{-8}$.
+    \item \textbf{d.} $\text{Mass of Ag} = \frac{(3400\text{ s})(0.0120\text{ A})}{96500}\times 107.9 = 0.0456\text{ g} \implies 45.6\%\text{ Ag}$. By difference, $21.9\%\text{ Cu}$.
+    \item \textbf{e.} Potential shift gives $[\ch{Ag+}] = 4.1\times 10^{-13}\text{ M}$ in 1.000 M \ch{NaBr} $\implies K_{sp} = 4.1\times 10^{-13}$.
+\end{itemize}
+
+\subsection*{Question 7 Solutions}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{a.} Ground: $1s^22s^22p^1$ (1 unpaired). Excited: $1s^22s^12p^2$ (3 unpaired).
+    \item \textbf{b.} H requires more energy ($10.20\text{ eV}$ vs $3.55\text{ eV}$ for B) because changing principal quantum number ($n=1 \rightarrow n=2$) involves a much larger energy gap than $2s \rightarrow 2p$.
+    \item \textbf{c.} Trigonal planar geometry with three $2c\text{-}2e$ bonds.
+    \item \textbf{d.} Non-planar bridged structure with two $3c\text{-}2e$ \ch{B-H-B} bonds and four terminal $2c\text{-}2e$ \ch{B-H} bonds.
+    \item \textbf{e.} Tetrahedral structure: \chemfig{B(-[2]H)(-[4]H)(-[6]H)(-H)} with a negative formal charge on Boron.
+    \item \textbf{f.} 3 isomers: \textit{ortho} (adjacent carbons), \textit{meta} (separated by 1 B), \textit{para} (opposite poles).
+\end{itemize}
+
+\subsection*{Question 8 Solutions}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{a.} Structures:
+    \begin{itemize}
+        \item \textbf{A}: 3-bromopentane: \chemfig{[:30]-[-30](-[6]Br)-[30]-[-30]}
+        \item \textbf{B/C}: \textit{(R)} and \textit{(S)} enantiomers of 2-bromopentane: \chemfig{[:30]-(<[6]Br)-[30]-[-30]} and \chemfig{[:30]-(<:[6]Br)-[30]-[-30]}
+        \item \textbf{D}: 1-pentene: \chemfig{[:30]=_[-30]-[30]-[-30]}
+    \end{itemize}
+    \item \textbf{b.} Constitutional isomers.
+    \item \textbf{c.} Enantiomers.
+    \item \textbf{d.} The \textit{(E)} isomer packs more regularly into the crystalline lattice, giving it a higher melting point. Boiling points depend on surface area, which is very similar for both isomers.
+    \item \textbf{e.} Chiral alkene with formula \ch{C6H12}: 3-methyl-1-pentene \chemfig{[:30]=_[-30](-[6]CH_3)-[30]-[-30]}
+\end{itemize}
+
+\end{document}
