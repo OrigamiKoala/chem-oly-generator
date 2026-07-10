@@ -11,3 +11,8 @@
 /generate_q46_to_60.py
 /generate_solutions.py
 /insert_diagrams.py
+
+/.venv/
+.env
+
+skill.yaml
