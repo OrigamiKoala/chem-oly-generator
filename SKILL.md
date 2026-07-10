@@ -1,7 +1,7 @@
 ---
 name: chem-oly-generator
 description: Handles the end-to-end multi-agent pipeline for drafting, verifying, test-solving, and compiling advanced USNCO-level chemistry exams.
-compatibility: Requires python3 with numpy and scipy, and pdfLaTeX with chemformula, chemfig, and TikZ packages.
+compatibility: Requires python3 with numpy and scipy
 allowed-tools: [code_execution]
 agents: ./AGENTS.md
 ---
