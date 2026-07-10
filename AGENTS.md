@@ -116,6 +116,7 @@
   - Goal: Compile all the questions generated into a single LaTeX document.
   - Context: The problems and solutions are listed in the "Problems" and "Solutions" documents. The format is listed in references/FORMAT.md
   - The output should be the LaTeX code for a document, able to be compiled using pdfLaTeX without any errors.
+  - Part I should have a double column format, while Part II and III should be single column.
   - Output the LaTeX code for the entire exam, including the exam class, preamble, and the exam itself. Wrap the LaTeX like so:
   ```latex
   [LaTeX CODE]
