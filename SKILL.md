@@ -53,6 +53,7 @@ All agents operate within `generation_environment` and must read/write to these 
 - **Compiler** collects the verified question structures.
 - It formats Part I items into a precise two-column layout and Part II items into a single-column layout with explicit vertical whitespace (`\vspace`) blocks for student work.
 - It verifies that the entire document can compile via pdfLaTeX with zero environment bugs.
+- Once everything has been completed, delete all intermediate files ("Problems", "Solutions", "Outlines" documents). Leave only the final exam (LaTeX or PDF file).
 
 ---
 
