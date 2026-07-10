@@ -1,7 +1,5 @@
 # USNCO Learning Objectives
 
-This syllabus covers 267 total objectives (157 Standard Level, 110 High Level) derived from national and local competition analysis (2015-2025).
-
 ---
 
 ## T1 : Stoichiometry/Solutions
