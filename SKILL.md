@@ -63,4 +63,3 @@ The **Compiler** must format the final payload using this structure:
 ```latex
 [a full latex document, including preamble, the questions in two column format, and solutions]
 ```
-The final output and any artifacts should be saved to ~/Downloads (/Users/carlliu/Downloads).
