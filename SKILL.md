@@ -61,5 +61,5 @@ All agents operate within `generation_environment` and must read/write to these 
 The **Compiler** must format the final payload using this structure:
 
 ```latex
-[a full latex document, including preamble, the questions in two column format, and solutions]
+[a full latex document, including preamble, the questions, and solutions]
 ```
