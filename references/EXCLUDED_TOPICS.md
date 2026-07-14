@@ -6,3 +6,4 @@
 - All calculus-based derivations or principles.
 - Graduate-level concepts entirely unless you explicitly provide the necessary first-principles background within the question text itself.
 - Advanced spectroscopy (e.g., 2D-NMR).
+- Slater's rules.
