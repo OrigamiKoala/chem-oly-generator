@@ -53,7 +53,7 @@ All agents operate within the same environment.
 - **Compiler** collects the verified question structures.
 - It formats Part I items into a precise two-column layout and Part II items into a single-column layout with explicit vertical whitespace (`\vspace`) blocks for student work.
 - It verifies that the entire document can compile via pdfLaTeX with zero environment bugs.
-- Once everything has been completed, delete all intermediate files ("Problems", "Solutions", "Outlines" documents). Leave only the final exam (PDF file) in ~/Downloads.
+- Once everything has been completed, delete all intermediate files ("Problems", "Solutions", "Outlines" documents).
 
 ---
 
@@ -64,3 +64,7 @@ The **Compiler** must format the final payload using this structure:
 ```latex
 [a full latex document, including preamble, the questions, and solutions]
 ```
+
+If the user does not have a TeX compiler on their computer, do not install any. Just output the TeX file, no PDF.
+
+***CRITICAL: You MUST save ONLY the final PDF/TeX file in the user's Downloads folder***
