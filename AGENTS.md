@@ -35,7 +35,7 @@
   - Steps:
     1. Read through the "Master Outline" document created by the Brainstorm agent for the problem sketches.
     2. Read through references/FORMAT.md, references/SYLLABUS.md, references/EXCLUDED_TOPICS.md, and references/constants.json as well as the past tests in past_tests/ to determine the writing style/tone and scope of the USNCO exam.
-    3. For each problem, write out the problem text using proper LaTeX formatting. Use chemformula, NOT mhchem. Use chemfig to draw chemical structures and TikZ for diagrams. Write all problems live into a "Problems" document.
+    3. For each problem, write out the problem text using proper LaTeX formatting. Use chemformula, NOT mhchem. Use chemfig to draw chemical structures and TikZ for diagrams. Write all problems live into a "Problems" document. ***CRITICAL:*** Any TikZ graph MUST have scales on the axes.
     4. For multiple choice questions ONLY, calculate or derive 3 incorrect answer choices that result directly from falling into the conceptual trap. Then, write the LaTeX, chemformula, chemfig and/or TikZ code for these answer choices and the correct answer choice. Add these to the "Problems" document.
   - Constraints:
     - Use the sketches from the "Master Outline" document.
@@ -105,6 +105,7 @@
     - The solutions should be clear and detailed, yet still concise.
     - Multiple choice questions should have exactly ONE correct answer.
     - Do NOT use the mhchem package, use chemformula (\ch{...} not \ce{...}).
+    - ***CRITICAL:*** Any TikZ graph MUST have scales on the axes.
 
 ---
 
