@@ -1,70 +1,89 @@
 ---
 name: chem-oly-generator
-description: Handles the end-to-end multi-agent pipeline for drafting, verifying, test-solving, and compiling advanced USNCO-level chemistry exams.
+description: Multi-agent pipeline for drafting, verifying, test-solving, and compiling advanced USNCO-level chemistry exams.
 compatibility: Requires python3 with numpy and scipy
-allowed-tools: [code_execution]
-agents: ./AGENTS.md
 ---
 
 # Skill: End-to-End Olympiad Test Generation Engine
 
 ## Objective
-Coordinate a structured, multi-agent assembly line to generate counterintuitive, error-free chemistry problems that test deep conceptual understanding while guaranteeing LaTeX compilability and absolute mathematical precision.
+Run a multi-agent assembly line that produces counterintuitive, error-free chemistry problems testing deep conceptual understanding, with guaranteed LaTeX compilability and exact arithmetic.
 
-## Shared File Environment Matrix
-All agents operate within the same environment.
-- **Reference Assets**: `references/FORMAT.md`, `references/SYLLABUS.md`, `references/EXCLUDED_TOPICS.md`, `references/constants.json`
-- **Historical Data**: `past_tests/`
-- **Pipeline Artifacts**: `Master Outline` (Text) $\rightarrow$ `Problems` (LaTeX) $\rightarrow$ `Solutions` (LaTeX) $\rightarrow$ Final Compiled Output
+## Shared Files
+- **References**: `references/FORMAT.md`, `SYLLABUS.md`, `EXCLUDED_TOPICS.md`, `constants.json`
+- **History**: `past_tests/`
+- **Artifacts**: `Master Outline` → `Problems` (LaTeX) → `Solutions` (LaTeX) → final compiled exam
 
----
+## Delegation
+`AGENTS.md` is the canonical definition of every role and of the **Shared Constraints** all generation agents must obey (content, voice, LaTeX, shard discipline). Load it before dispatching.
 
-## Execution Steps & Pipeline Protocol
+Six subagent stubs are registered per host — `.agents/agents/chem-oly-*.md` for Antigravity, `.claude/agents/chem-oly-*.md` for Claude Code — each pointing back at its section of `AGENTS.md`. Dispatch roles by invoking those subagents (`invoke_subagent`, the Agent/Task tool, or the host's equivalent). If the host registers no subagents, read `AGENTS.md` and pass each role's block to a freshly spawned agent instead.
 
-### Execution Constraints
-- DO NOT simulate multiple roles inside a single LLM context window.
-- You MUST explicitly spawn subagents using the `spawn` or `sub_agents` command/tool to provision separated, isolated subagents.
-- Await the asynchronous callback or Artifact generation from the subagent before proceeding.
-
-### Step 1: Blueprint Configuration (Director & Brainstorm)
-- **Director** validates that all reference files are present in the workspace.
-- **Brainstorm** reads the format parameters and past test sets. It outputs the `Master Outline` mapping brand-new, never-seen-before ways of testing a student's knowledge (avoiding past exam setups) to unique chemical systems loaded with hidden conceptual traps that students have never encountered and will fall into without realizing.
-
-### Step 2: Drafting & Graphic Rendering (Writer)
-- **Writer** parses each sketch from the `Master Outline`.
-- **Formatting Directives**:
-  - Use `\ch{}` from the `chemformula` package for all reactions. Never use `mhchem`.
-  - Every organic structure must be explicitly drawn using structural code strings via `chemfig`.
-  - Every graph, phase diagram, or cell schematic must be coded natively using LaTeX `TikZ` syntax.
-  - No bold characters (`\textbf` or `\mathbf`) are allowed inside math environments or regular text blocks.
-
-### Step 3: Blind Verification & Distractor Assertion (Solver)
-- **Solver** reads *only* the problem text block. It must programmatically evaluate the problem inside the sandbox to isolate the unique true value before looking at the choices.
-- **Mathematical Integrity**: It must verify that numbers are mathematically consistent (e.g., cell potentials match Gibbs free energy changes, equilibrium concentrations remain positive).
-- It writes out the detailed, non-truncated solution math directly to the `Solutions` document.
-- It also reviews the question text and answer choices, ensuring quality.
-- If a question contains a structural error (too easy, out of scope, etc), the **Solver** must flag it. The **Director** halts the chain, invalidates that specific question state, and routes it back to the **Brainstorm/Writer** step for a clean substitution run. If a question simply contains a syntax error, the **Director** should reroute the task to the **Writer** to fix the syntax.
-
-### Step 4: Adversarial Quality Audit & Healing Loops (Reviewer & Director)
-- **Reviewer** meticulously compares `Problems` against `Solutions` and checks strict compliance with the excluded topics list.
-- **The Healing Loop Rule**: If a question contains a structural error (too easy, out of scope, etc), the **Reviewer** must flag it. The **Director** halts the chain, invalidates that specific question state, and routes it back to the **Brainstorm/Writer** step for a clean substitution run. If a question simply contains a syntax error, the **Director** should reroute the task to the **Writer** to fix the syntax.
-
-### Step 5: Final Production Compilation (Compiler)
-- **Compiler** collects the verified question structures.
-- It formats Part I items into a precise two-column layout and Part II items into a single-column layout with explicit vertical whitespace (`\vspace`) blocks for student work.
-- It verifies that the entire document can compile via pdfLaTeX with zero environment bugs.
-- Once everything has been completed, delete all intermediate files ("Problems", "Solutions", "Outlines" documents).
+Never simulate multiple roles inside one context window — that is the fastest route to the truncation failure below. Await each subagent's result before proceeding.
 
 ---
 
-## Output Standard Template
+## Output Budget Discipline
+***CRITICAL: this is the most common failure mode of this pipeline, on every host.***
 
-The **Compiler** must format the final payload using this structure:
+An agent asked to emit a large artifact in ONE tool call truncates mid-argument. The call becomes malformed, nothing reaches disk, and the agent appears to freeze — full budget spent reading, no output file. An empty working directory after a long silent run is this bug. A half-length exam is the same bug in milder form.
 
-```latex
-[a full latex document, including preamble, the questions, and solutions]
+Four rules, enforced on every generation step:
+
+1. **Shard by topic.** Never assign one agent all 60 Part I questions, all 8 Part II problems, or all their solutions. Cap each agent at 2 topics / 12 MCQs / 2 free-response problems, and run shards in parallel. Target under ~4000 output tokens per agent.
+2. **Write incrementally.** Create the file after the FIRST topic, then append one topic at a time. Never buffer a whole artifact for a single closing write.
+3. **Preload shared reading.** The Director distills `past_tests/` ONCE (Step 1) and passes compact text to subagents. Subagents must not each re-read `past_tests/` — that is ~120 KB per agent, crowding out generation headroom.
+4. **One file per shard.** Each agent writes only its own `*_shard_<n>` file; the Director concatenates. Two agents never share a file.
+
+If an agent returns having written nothing, the shard was too wide. Split it and re-dispatch — do not retry it unchanged.
+
+## The Healing Loop Rule
+Referenced by Steps 3 and 4. When any agent flags a question:
+- **Structural error** (too easy, out of scope, unsound): the Director halts the chain, invalidates that question, and routes it back to Brainstorm/Writer for a clean substitution.
+- **Syntax error only**: the Director routes it to the Writer for a fix.
+
+---
+
+## Pipeline
+
+### Step 1 — Blueprint (Director & Brainstorm)
+- **Director** confirms all reference files are present.
+- **Director** builds the `Past Setups Catalogue` before dispatching anything: read every exam in `past_tests/` for the part being generated, distill one line per past question (topic, chemical system, what was asked), and cache it as `references/PAST_SETUPS.md`. Reuse the cache on later runs. This is the ONLY point where full past tests are read.
+- **Brainstorm** runs as parallel shards — one agent per 2 topics for Part I (5 shards), one per 2 problems for Parts II and III. Each shard receives FORMAT, SYLLABUS, EXCLUDED_TOPICS, and the catalogue — never the raw past tests.
+- Each shard writes its own slice of the `Master Outline` incrementally, mapping brand-new, never-seen-before ways of testing syllabus knowledge (avoiding catalogued setups) onto unique chemical systems loaded with hidden traps students will fall into without realizing.
+- **Director** concatenates the slices and verifies the question count against `references/FORMAT.md`.
+
+### Step 2 — Drafting (Writer)
+- Parallel shards on the same topic boundaries. Each Writer reads only its own outline slice and appends to only its own `Problems` shard file, one question per write.
+- LaTeX carrying TikZ and chemfig is far denser than outline prose, so never widen a Writer shard past 12 MCQs or 2 free-response problems — this step hits the ceiling before any other.
+
+### Step 3 — Blind Verification (Solver)
+- Parallel shards on the same boundaries. The Solver reads *only* the problem text of its shard and must evaluate the problem programmatically in the sandbox to isolate the unique true value **before** looking at the answer choices.
+- **Mathematical integrity**: verify internal consistency (cell potentials match Gibbs free energy changes, equilibrium concentrations stay positive, etc.).
+- Append full, non-truncated solution math to its own `Solutions` shard file, one problem per write. Worked solutions are the longest artifact here; a shard wider than 12 questions will truncate.
+- Review question text and answer choices for quality; flag defects per the Healing Loop Rule.
+
+### Step 4 — Adversarial Audit (Reviewer & Director)
+- **Reviewer** compares `Problems` against `Solutions`, checks strict compliance with `EXCLUDED_TOPICS.md` and the constraints in `AGENTS.md`, and flags defects per the Healing Loop Rule.
+
+### Step 5 — Compilation (Compiler)
+- Assemble the final document by CONCATENATING verified shard files mechanically (`cat`, or `\input{}` per shard). NEVER re-emit question or solution text — a full exam is tens of thousands of tokens and will truncate.
+- The Compiler authors only the document class, preamble, section scaffolding, and closing matter. Everything else is copied byte-for-byte from shards that passed Solver and Reviewer.
+- Part I in two-column layout; Parts II and III single-column with explicit `\vspace` blocks for student work.
+- Verify the document compiles under pdfLaTeX with zero errors. Fix errors by editing the offending shard in place and re-concatenating, never by rewriting the whole document.
+- Delete all intermediates when done (`Master Outline`, `Problems`, `Solutions`, shard files).
+
+---
+
+## Output Standard
+Produce on disk a single `.tex` file:
+
+```
+[preamble] + [questions, per-part layout] + [solutions] + [closing matter]
 ```
 
-If the user does not have a TeX compiler on their computer, do not install any. Just output the TeX file, no PDF.
+Report the output path, page count, and pdfLaTeX exit status. Do NOT paste the assembled exam into the chat response — reproducing a full exam inline causes the truncation failure above.
 
-***CRITICAL: You MUST save ONLY the final PDF/TeX file in the user's Downloads folder***
+If the user has no TeX compiler, do not install one; deliver the `.tex` only.
+
+***CRITICAL: save ONLY the final PDF/TeX file to the user's Downloads folder.***
