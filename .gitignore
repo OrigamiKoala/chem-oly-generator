@@ -5,8 +5,8 @@
 /Solutions*.tex
 *_shard_*
 
-# Generated cache — the Director rebuilds this from past_tests/ on first run
-/references/PAST_SETUPS.md
+# NOTE: references/PAST_SETUPS.md is deliberately NOT ignored. It is committed so
+# the 40k-token pass over past_tests/ is paid once, not on every fresh clone.
 
 # Throwaway generation scripts
 /gen_*.py
