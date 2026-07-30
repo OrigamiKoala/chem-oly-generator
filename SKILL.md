@@ -28,7 +28,7 @@ All agents operate within the same environment.
 
 ### Step 1: Blueprint Configuration (Director & Brainstorm)
 - **Director** validates that all reference files are present in the workspace.
-- **Brainstorm** reads the format parameters and past test sets. It outputs the `Master Outline` mapping a creative, never-before-seen way of testing a student's knowledge to a unique, convoluted system for each designated question slot.
+- **Brainstorm** reads the format parameters and past test sets. It outputs the `Master Outline` mapping brand-new, never-seen-before ways of testing a student's knowledge (avoiding past exam setups) to unique chemical systems loaded with hidden conceptual traps that students have never encountered and will fall into without realizing.
 
 ### Step 2: Drafting & Graphic Rendering (Writer)
 - **Writer** parses each sketch from the `Master Outline`.
