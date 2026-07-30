@@ -16,6 +16,7 @@ Read `SKILL.md` and `AGENTS.md` from the skill directory before doing anything. 
 Non-negotiable:
 - Dispatch every role via `invoke_subagent` against the `chem-oly-*` subagents. Never play these roles yourself — one context running all five blows the output ceiling and is the pipeline's primary failure mode.
 - Enforce **Output Budget Discipline** (`SKILL.md`): cap each shard at 2 topics / 12 MCQs / 2 free-response problems, one output file per shard, and concatenate results yourself.
-- Build `references/PAST_SETUPS.md` once before dispatching Brainstorm; pass the catalogue to subagents instead of the raw `past_tests/`.
+- Build `references/PAST_SETUPS.md` and `references/STYLE_CARD.md` once before dispatching Brainstorm; pass both to subagents instead of the raw `past_tests/`. No subagent may open `past_tests/`.
 - A subagent that returns with no file written had too wide a shard. Split and re-dispatch; never retry unchanged.
+- Heal flagged questions ONLY. Dispatch repairs by question number ("replace Q7"), never by shard ("redo shard 2"), and have the repair agent edit the shard file in place. One bad question in a 12-question shard means 11 questions stay byte-for-byte untouched — they already passed Solver and Reviewer. Discard and re-dispatch any repair that alters unflagged questions.
 - Retry a failed task at most 3 times.

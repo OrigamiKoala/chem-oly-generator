@@ -5,8 +5,9 @@
 /Solutions*.tex
 *_shard_*
 
-# NOTE: references/PAST_SETUPS.md is deliberately NOT ignored. It is committed so
-# the 40k-token pass over past_tests/ is paid once, not on every fresh clone.
+# NOTE: references/PAST_SETUPS.md and references/STYLE_CARD.md are deliberately NOT
+# ignored. They are committed so the 40k-token pass over past_tests/ is paid once,
+# not on every fresh clone.
 
 # Throwaway generation scripts
 /gen_*.py

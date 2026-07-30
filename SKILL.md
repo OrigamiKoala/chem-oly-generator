@@ -42,19 +42,32 @@ Referenced by Steps 3 and 4. When any agent flags a question:
 - **Structural error** (too easy, out of scope, unsound): the Director halts the chain, invalidates that question, and routes it back to Brainstorm/Writer for a clean substitution.
 - **Syntax error only**: the Director routes it to the Writer for a fix.
 
+***CRITICAL: heal the flagged questions ONLY — never the shard around them.*** A flag names specific question numbers. Those are the only questions that may be regenerated. If a 12-question shard comes back with one defect, exactly one question is replaced and the other 11 are kept byte-for-byte as they already sit on disk.
+
+- Dispatch repairs by question number, never by shard. A repair prompt says "replace Q7"; it never says "redo shard 2".
+- The repair agent rewrites only the named questions and edits them into the existing shard file in place. It must not re-emit, re-verify, or "improve" untouched questions — surrounding questions already passed Solver and Reviewer, and rewriting them discards that verification and re-rolls the dice on 11 good questions to fix one bad one.
+- Never delete and regenerate a whole shard file to fix part of it. Edit in place.
+- Regenerating a passing question is a defect in itself, on par with shipping the bad one. If a repair returns a shard whose unflagged questions have changed, discard that result and re-dispatch it correctly.
+
 ---
 
 ## Pipeline
 
 ### Step 1 — Blueprint (Director & Brainstorm)
 - **Director** confirms all reference files are present.
-- **Director** builds the `Past Setups Catalogue` before dispatching anything: read every exam in `past_tests/` for the part being generated, distill one line per past question (topic, chemical system, what was asked), and cache it as `references/PAST_SETUPS.md`. Reuse the cache on later runs. This is the ONLY point where full past tests are read.
+- **Director** builds two caches before dispatching anything, in the same pass over `past_tests/`. This is the ONLY point in the pipeline where full past tests are read.
+  - `references/PAST_SETUPS.md` — the Past Setups Catalogue: one line per past question (topic, chemical system, what was asked).
+  - `references/STYLE_CARD.md` — a compact voice specification distilled from the past exams, target ~1,100 tokens: stem phrasing and sentence rhythm, how conditions and given data are stated, answer-choice conventions (ordering, significant figures, units), and the characteristic neutral register. Capture how the exams *sound*, not what they ask — that is the catalogue's job.
+    - State explicitly that stem length is **not** capped. Never derive a word-count ceiling from the exams: the mean Part I stem is short only because most past questions are easy, and a ceiling would silently cap the difficulty [SC] demands.
+    - Include 3–4 verbatim stem openings as exemplars, chosen from the **most demanding** questions in `past_tests/` — multi-step inference, experimental design, error analysis. Never use a one-line recall stem as an exemplar; exemplars get imitated, and a recall exemplar teaches recall.
+  - Cache both and reuse them on later runs.
 - **Brainstorm** runs as parallel shards — one agent per 2 topics for Part I (5 shards), one per 2 problems for Parts II and III. Each shard receives FORMAT, SYLLABUS, EXCLUDED_TOPICS, and the catalogue — never the raw past tests.
 - Each shard writes its own slice of the `Master Outline` incrementally, mapping brand-new, never-seen-before ways of testing syllabus knowledge (avoiding catalogued setups) onto unique chemical systems loaded with hidden traps students will fall into without realizing.
 - **Director** concatenates the slices and verifies the question count against `references/FORMAT.md`.
 
 ### Step 2 — Drafting (Writer)
 - Parallel shards on the same topic boundaries. Each Writer reads only its own outline slice and appends to only its own `Problems` shard file, one question per write.
+- Writers calibrate voice from `references/STYLE_CARD.md` and must NOT open `past_tests/` at all. A full past exam is ~10,000 tokens per Writer shard; the style card is ~1,100.
 - LaTeX carrying TikZ and chemfig is far denser than outline prose, so never widen a Writer shard past 12 MCQs or 2 free-response problems — this step hits the ceiling before any other.
 
 ### Step 3 — Blind Verification (Solver)

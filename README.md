@@ -1,5 +1,19 @@
 ### USNCO exam generator agent ###
 
+> **Voice calibration via style card.** Writer agents calibrate voice from a ~1,100-token
+> `references/STYLE_CARD.md` distilled once by the Director, instead of each reading a full
+> ~10,000-token past exam — saving roughly 43,500 input tokens per Part I run across 5 Writer
+> shards.
+>
+> **Difficulty risk to watch.** The card is scoped to voice — Brainstorm sets difficulty and
+> never reads the card — but the card is distilled from exams that are *easier* than what [SC]
+> demands, so it can leak difficulty guidance it was never meant to carry. An earlier revision
+> derived a "seldom more than 40-50 words" stem ceiling from the past-exam mean (real stems run
+> 6–233 words, median 42) and used a one-line recall question as an exemplar; both capped
+> difficulty. The card now states that length is uncapped and draws its exemplars from the most
+> demanding past questions. Re-check this whenever the card is regenerated, and note that the
+> Reviewer judges voice against the card, so anything the card implies is enforced.
+
 A multi-agent skill for generating USNCO-style chemistry mock exams — deliberately harder than the real thing, built around hidden conceptual traps, and emitted as compilable LaTeX.
 
 A Director agent shards the work across Brainstorm, Writer, Solver, Reviewer, and Compiler subagents. `SKILL.md` defines the pipeline; `AGENTS.md` is the canonical definition of the six roles and of the shared constraint list every generation agent is held to.

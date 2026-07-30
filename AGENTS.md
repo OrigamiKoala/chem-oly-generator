@@ -31,14 +31,16 @@ Binding on Brainstorm, Writer, Solver, and Reviewer. Referenced below as **[SC]*
 **Shard discipline** (see "Output Budget Discipline" in SKILL.md)
 18. Work ONLY on the questions the Director assigned you, and write ONLY to your own shard file. Never write to another agent's file.
 19. Create your file after your first item, then append one item per write. Never batch a whole shard into one closing write — it will truncate and leave nothing on disk.
+20. **On a repair task**, rewrite ONLY the question numbers named in the assignment and edit them into the existing shard file in place. Leave every other question in that file byte-for-byte untouched — do not re-emit, re-verify, reformat, or "improve" them. They already passed Solver and Reviewer; regenerating a passing question to fix a neighbouring one is a defect, not a courtesy. Never delete and rebuild a shard file to change part of it.
 
 ---
 
 ## Orchestrator: Director
 Coordinates the workflow: assigns tasks, tracks progress, resolves conflicts and errors, retries failed tasks up to 3 times. Reads `references/FORMAT.md` for exam format, scope, and question counts.
 - **Sharding duty**: never dispatch a whole part to one agent. Split every generation step into parallel shards of at most 2 topics / 12 MCQs / 2 free-response problems, give each its own output file, and concatenate the results.
-- **Catalogue duty**: before dispatching Brainstorm, read `past_tests/` once and distill `references/PAST_SETUPS.md` — one line per past question (topic, chemical system, what was asked). Subagents get this catalogue instead of the raw tests.
+- **Catalogue duty**: before dispatching Brainstorm, read `past_tests/` once and distill two caches. `references/PAST_SETUPS.md` — one line per past question (topic, chemical system, what was asked). `references/STYLE_CARD.md` — a ~1,100-token voice spec (stem phrasing, how given data is stated, answer-choice conventions, register, an explicit statement that stem length is uncapped, and 3–4 verbatim stem openings drawn from the most demanding past questions). Subagents get these instead of the raw tests, and no subagent opens `past_tests/`.
 - **Failure triage**: a subagent that returns with no file written had too wide a shard. Split and re-dispatch; never retry unchanged.
+- **Repair duty**: heal flagged questions ONLY, never the shard around them. Dispatch every repair by question number ("replace Q7"), never by shard ("redo shard 2"), and have the repair agent edit the existing shard file in place. One defect in a 12-question shard means one replacement and 11 questions left byte-for-byte untouched — they already passed Solver and Reviewer, and regenerating them throws that verification away. If a repair comes back with unflagged questions altered, discard it and re-dispatch. See "The Healing Loop Rule" in `SKILL.md`.
 
 ## Agent: Brainstorm
 Invents novel problem ideas and hidden conceptual traps.
@@ -55,7 +57,7 @@ Writes problem text and answer choices in past-USNCO style, harder.
 - **Role**: creative olympiad question writer.
 - **Steps**:
   1. Read ONLY your assigned slice of the "Master Outline".
-  2. Read `references/FORMAT.md`, `EXCLUDED_TOPICS.md`, and `constants.json`, plus AT MOST ONE past test for voice calibration. One is enough; opening all of them costs ~120 KB and starves your LaTeX budget.
+  2. Read `references/FORMAT.md`, `EXCLUDED_TOPICS.md`, `constants.json`, and `references/STYLE_CARD.md`. Match the style card exactly — it is your only voice reference. Do NOT open `past_tests/`; a full exam is ~10,000 tokens and starves the budget you need to emit LaTeX.
   3. Write each problem in proper LaTeX per [SC] 12–17.
   4. For multiple choice ONLY: derive 3 incorrect choices that each follow directly from falling into the trap, then code all four choices.
   5. Append each finished question to your own "Problems" shard file immediately, one question per write. TikZ and chemfig blocks are dense — a batched final write truncates mid-argument and leaves an empty file.
@@ -76,7 +78,7 @@ Blind test-solves problems to confirm they are solvable and numerically correct,
 Nitpicky quality gate — hates bad or mediocre questions.
 - **Role**: expert USNCO test writer.
 - **Steps**:
-  1. Read `references/FORMAT.md`, `EXCLUDED_TOPICS.md`, and `references/PAST_SETUPS.md`. Consult `SYLLABUS.md` and at most one past test as needed.
+  1. Read `references/FORMAT.md`, `EXCLUDED_TOPICS.md`, `references/PAST_SETUPS.md`, and `references/STYLE_CARD.md`. Consult `SYLLABUS.md` as needed. Judge voice against the style card, not against `past_tests/`.
   2. Read the "Problems" and "Solutions" shards for your assigned range.
   3. Audit every problem against [SC], item by item, and verify each solution is correct.
   4. Report findings as a compact list — question number, one-line diagnosis, verdict (syntax fix vs. structural replacement) — to the Director. Never quote a problem in full or restate a solution; the Director has both on disk, and long reviewer output truncates.
