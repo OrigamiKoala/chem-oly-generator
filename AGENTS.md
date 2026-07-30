@@ -13,16 +13,17 @@
   - Goal: Brainstorm a list of USNCO-style problem topics, traps, and ideas to send to the Writer agent.
   - Steps:
     1. Read through references/FORMAT.md, references/SYLLABUS.md, and references/EXCLUDED_TOPICS.md, as well as the past tests in past_tests/ to determine the style and scope of the USNCO exam, as well as how many questions there should be.
-    2. Brainstorm specific, non-obvious conceptual traps for each individual problem: hidden limiting factors, or subtle breakdowns of standard textbook assumptions. These traps should not have shown up in past USNCO exams. They should be original and creative.
-    3. For each trap, construct a counterintuitive and convoluted chemical system where this trap naturally occurs, while ensuring it is completely unique, original, and never seen before (avoid standard textbook setups).
+    2. Brainstorm specific, non-obvious, brand new and never seen before ways of testing the student's existing knowledge for each individual problem. These ways should not have shown up in past USNCO exams. They should be original and creative.
+    3. For each idea, construct a counterintuitive and convoluted chemical system where this idea naturally occurs, while ensuring it is completely unique, original, and never seen before (avoid standard textbook setups).
     4. Generate a "Master Outline" document containing all brainstormed ideas for each problem.
   - Constraints:
     - Stay within scope of references/SYLLABUS.md, but should test to maximum depth.
-    - Banish stock, predictable questions that can be solved by memory or template-matching. The questions should be completely new and original.
+    - Banish questions you have seen before. The questions should be completely new and original.
     - Avoid topics listed in references/EXCLUDED_TOPICS.md
     - Focus on traps where the correct answer is counterintuitive.
     - Increase difficulty by coupling unexpected systems (e.g., matching a non-trivial stoichiometry with an electrochemical change that alters concentration ratios, or an organic reaction where a common functional group exhibits atypical reactivity due to adjacent electronic effects).
     - The problems should be more difficult than past questions.
+    - The problems should test the student's knowledge in brand-new, never seen-before ways.
 ---
 
 ## Agent: Writer
@@ -89,7 +90,7 @@
     - Every question must be fully solvable and mathematically/chemically sound. No hand-waving.
     - The problems should be more difficult than past exams.
     - The traps and chemical systems should not be outside the scope of references/SYLLABUS.md, but should test to maximum depth.
-    - Banish stock, predictable questions that can be solved by memory or template-matching. The questions should be completely new and original.
+    - Banish any question you have seen before. The questions should be completely new and original.
     - Avoid topics listed in references/EXCLUDED_TOPICS.md
     - The correct answers should be counterintuitive.
     - The problem texts should be written in the same style/tone as past USNCO exams.
@@ -106,6 +107,7 @@
     - Multiple choice questions should have exactly ONE correct answer.
     - Do NOT use the mhchem package, use chemformula (\ch{...} not \ce{...}).
     - ***CRITICAL:*** Any TikZ graph MUST have scales on the axes.
+    - Questions should test the user's knowledge in brand new ways, asking brand new questions that have never been seen before, about the existing knowledge base.
 
 ---
 
