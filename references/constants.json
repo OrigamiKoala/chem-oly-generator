@@ -1,0 +1,10 @@
+{
+    "R": "8.314 J/(mol K), or 0.08206 L atm/(mol K)",
+    "F": "96,500 C/mol or 96,500 J V^{-1} mol^{-1}",
+    "h": "6.626 x 10^{-34} J s",
+    "c": "2.998 x 10^8 m/s",
+    "N_A": "6.022 x 10^{23} mol^{-1}",
+    "1 atm": "1.013 bar or 760 mm Hg or 760 torr",
+    "0°C": "273.15 K",
+    "Specific heat capcity of liquid water": "4.184 J g^{-1} K^{-1}"
+}

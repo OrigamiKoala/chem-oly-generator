@@ -1,0 +1,20 @@
+# Pipeline intermediates (Step 5 deletes these; ignored in case a run is interrupted)
+/Master Outline*.md
+/Replacement Outline*.md
+/Problems*.tex
+/Solutions*.tex
+*_shard_*
+
+# NOTE: references/PAST_SETUPS.md and references/STYLE_CARD.md are deliberately NOT
+# ignored. They are committed so the 40k-token pass over past_tests/ is paid once,
+# not on every fresh clone.
+
+# Throwaway generation scripts
+/gen_*.py
+/generate_*.py
+/draft_outline.py
+/insert_diagrams.py
+
+/.venv/
+.env
+.DS_Store

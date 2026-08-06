@@ -1,0 +1,8 @@
+name: chem-oly-generator
+description: Multi-agent pipeline for drafting, verifying, test-solving, and compiling advanced USNCO-level chemistry exams.
+version: 0.2.0
+author: jiayou.carl.liu@gmail.com
+command: chem-oly-generator
+
+tools_visibility:
+  default: global
