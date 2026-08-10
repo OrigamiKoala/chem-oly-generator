@@ -39,6 +39,6 @@ The pipeline's most common failure is an agent trying to emit a whole exam in a 
 
 #### Credits
 
-The `past_tests` folder contains TeX versions of past USNCO exams. Learn more about the USNCO [here](https://www.acs.org/education/olympiad.html). These are not my property and do not fall under the same license as the rest of the repo.
+The `references/past_tests` folder contains TeX versions of past USNCO exams. Learn more about the USNCO [here](https://www.acs.org/education/olympiad.html). These are not my property and do not fall under the same license as the rest of the repo.
 
 If you like my stuff, consider supporting me on [Patreon](https://www.patreon.com/cw/origamikoala). Thanks!

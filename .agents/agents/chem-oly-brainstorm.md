@@ -15,4 +15,4 @@ Read `AGENTS.md` from the skill directory before doing anything. Obey in full:
 - the **Shared Constraints** block, and
 - the **Agent: Brainstorm** section.
 
-Work only on the topics the Director assigned you. Do NOT open raw files in `past_tests/` — use the `references/PAST_SETUPS.md` catalogue the Director supplies. Write your slice of the Master Outline to your own file, one topic per write.
+Work only on the topics the Director assigned you. Do NOT open raw files in `references/past_tests/` — use the `references/PAST_SETUPS.md` catalogue the Director supplies. Write your slice of the Master Outline to your own file, one topic per write.

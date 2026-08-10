@@ -1,5 +1,5 @@
 ---
-name: stylecard-chem-oly-generator
+name: chem-oly-generator
 description: Multi-agent pipeline for drafting, verifying, test-solving, and compiling advanced USNCO-level chemistry exams.
 compatibility: Requires python3 with numpy and scipy
 ---
@@ -11,7 +11,7 @@ Run a multi-agent assembly line that produces counterintuitive, error-free chemi
 
 ## Shared Files
 - **References**: `references/FORMAT.md`, `SYLLABUS.md`, `EXCLUDED_TOPICS.md`, `constants.json`
-- **History**: `past_tests/`
+- **History**: `references/past_tests/`
 - **Artifacts**: `Master Outline` → `Problems` (LaTeX) → `Solutions` (LaTeX) → final compiled exam
 
 ## Delegation
@@ -32,7 +32,7 @@ Four rules, enforced on every generation step:
 
 1. **Shard by topic.** Never assign one agent all 60 Part I questions, all 8 Part II problems, or all their solutions. Cap each agent at 2 topics / 12 MCQs / 2 free-response problems, and run shards in parallel. Target under ~4000 output tokens per agent.
 2. **Write incrementally.** Create the file after the FIRST topic, then append one topic at a time. Never buffer a whole artifact for a single closing write.
-3. **Preload shared reading.** The Director distills `past_tests/` ONCE (Step 1) and passes compact text to subagents. Subagents must not each re-read `past_tests/` — that is ~120 KB per agent, crowding out generation headroom.
+3. **Preload shared reading.** The Director distills `references/past_tests/` ONCE (Step 1) and passes compact text to subagents. Subagents must not each re-read `references/past_tests/` — that is ~120 KB per agent, crowding out generation headroom.
 4. **One file per shard.** Each agent writes only its own `*_shard_<n>` file; the Director concatenates. Two agents never share a file.
 
 If an agent returns having written nothing, the shard was too wide. Split it and re-dispatch — do not retry it unchanged.
@@ -55,11 +55,11 @@ Referenced by Steps 3 and 4. When any agent flags a question:
 
 ### Step 1 — Blueprint (Director & Brainstorm)
 - **Director** confirms all reference files are present.
-- **Director** builds two caches before dispatching anything, in the same pass over `past_tests/`. This is the ONLY point in the pipeline where full past tests are read.
+- **Director** builds two caches before dispatching anything, in the same pass over `references/past_tests/`. This is the ONLY point in the pipeline where full past tests are read.
   - `references/PAST_SETUPS.md` — the Past Setups Catalogue: one line per past question (topic, chemical system, what was asked).
   - `references/STYLE_CARD.md` — a compact voice specification distilled from the past exams, target ~1,100 tokens: stem phrasing and sentence rhythm, how conditions and given data are stated, answer-choice conventions (ordering, significant figures, units), and the characteristic neutral register. Capture how the exams *sound*, not what they ask — that is the catalogue's job.
     - State explicitly that stem length is **not** capped. Never derive a word-count ceiling from the exams: the mean Part I stem is short only because most past questions are easy, and a ceiling would silently cap the difficulty [SC] demands.
-    - Include 3–4 verbatim stem openings as exemplars, chosen from the **most demanding** questions in `past_tests/` — multi-step inference, experimental design, error analysis. Never use a one-line recall stem as an exemplar; exemplars get imitated, and a recall exemplar teaches recall.
+    - Include 3–4 verbatim stem openings as exemplars, chosen from the **most demanding** questions in `references/past_tests/` — multi-step inference, experimental design, error analysis. Never use a one-line recall stem as an exemplar; exemplars get imitated, and a recall exemplar teaches recall.
   - Cache both and reuse them on later runs.
 - **Brainstorm** runs as parallel shards — one agent per 2 topics for Part I (5 shards), one per 2 problems for Parts II and III. Each shard receives FORMAT, SYLLABUS, EXCLUDED_TOPICS, and the catalogue — never the raw past tests.
 - Each shard writes its own slice of the `Master Outline` incrementally, mapping brand-new, never-seen-before ways of testing syllabus knowledge (avoiding catalogued setups) onto unique chemical systems loaded with hidden traps students will fall into without realizing.
@@ -67,7 +67,7 @@ Referenced by Steps 3 and 4. When any agent flags a question:
 
 ### Step 2 — Drafting (Writer)
 - Parallel shards on the same topic boundaries. Each Writer reads only its own outline slice and appends to only its own `Problems` shard file, one question per write.
-- Writers calibrate voice from `references/STYLE_CARD.md` and must NOT open `past_tests/` at all. A full past exam is ~10,000 tokens per Writer shard; the style card is ~1,100.
+- Writers calibrate voice from `references/STYLE_CARD.md` and must NOT open `references/past_tests/` at all. A full past exam is ~10,000 tokens per Writer shard; the style card is ~1,100.
 - LaTeX carrying TikZ and chemfig is far denser than outline prose, so never widen a Writer shard past 12 MCQs or 2 free-response problems — this step hits the ceiling before any other.
 
 ### Step 3 — Blind Verification (Solver)

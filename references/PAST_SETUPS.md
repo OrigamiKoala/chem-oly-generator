@@ -1,11 +1,11 @@
 # Past Setups Catalogue
 
-Distilled index of every question in `past_tests/`. One line per question:
+Distilled index of every question in `references/past_tests/`. One line per question:
 `N. Tn | chemical system | what was asked`
 
 **Purpose:** Brainstorm agents read this instead of the raw exams (~40,000 tokens for Part I)
 to see which setups are already burned. A new question must not reuse a system/ask pairing
-listed here. Regenerate only when new exams are added to `past_tests/`.
+listed here. Regenerate only when new exams are added to `references/past_tests/`.
 
 Topic codes follow `references/SYLLABUS.md` (T1–T10). Part I runs a strict 10-topic matrix,
 6 questions per topic, in order: Q1–6 T1, Q7–12 T2, … Q55–60 T10.
