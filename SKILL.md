@@ -99,4 +99,4 @@ Report the output path, page count, and pdfLaTeX exit status. Do NOT paste the a
 
 If the user has no TeX compiler, do not install one; deliver the `.tex` only.
 
-***CRITICAL: save ONLY the final PDF/TeX file to the user's Downloads folder.***
+***CRITICAL: save ONLY the final PDF/TeX file in the user's Downloads folder ($HOME/Downloads). Do not save elswhere***
